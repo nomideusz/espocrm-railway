@@ -4,5 +4,6 @@
   "description": "EspoCRM 10 on Postgres with live updates and an admin ready on boot",
   "category": "Other",
   "image": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/espocrm.svg",
-  "card_desc": "EspoCRM 10: contacts, accounts, leads, deals and email in one CRM, live updates over WebSocket, and the admin created on first boot."
+  "card_desc": "EspoCRM 10: contacts, accounts, leads, deals and email in one CRM, live updates over WebSocket, and the admin created on first boot.",
+  "id": "d059d5fe-1a85-4759-94b3-f8e747366b7e"
 }

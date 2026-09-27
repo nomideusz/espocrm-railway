@@ -5,10 +5,20 @@
 set -euo pipefail
 cd /var/www/html
 
-# The volume is mounted at data/; custom/ and client/custom/ point into it.
+# Railway flattens the image layers, which brings back the mpm_event links the PHP
+# image deleted, and Apache then refuses to start: "AH00534: More than one MPM
+# loaded". mod_php needs prefork only.
+rm -f /etc/apache2/mods-enabled/mpm_event.* /etc/apache2/mods-enabled/mpm_worker.*
+
+# One volume per service, mounted at data/. custom/ (custom fields, entities,
+# layouts, extensions) and client/custom/ go on it too, as data/custom and
+# data/client-custom, copied from the image on first boot.
 rm -rf data/lost+found
-[ -d data/custom ] || cp -a /usr/src/espocrm-seed/custom data/custom
-[ -d data/client-custom ] || cp -a /usr/src/espocrm-seed/client-custom data/client-custom
+for d in custom client/custom; do
+  v=data/${d//\//-}
+  [ -d "$v" ] || cp -a "$d" "$v"
+  [ -L "$d" ] || { rm -rf "$d"; ln -s "/var/www/html/$v" "$d"; }
+done
 
 # Re-applied on every boot, so a custom domain only needs ESPOCRM_SITE_URL
 # changed; the WebSocket address follows the site URL.

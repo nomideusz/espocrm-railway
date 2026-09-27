@@ -3,18 +3,13 @@
 # container sharing three volumes; a Railway volume can't be shared.
 FROM espocrm/espocrm:10.0.8
 
-# One volume per service, mounted at data/. custom/ (entity and layout
-# changes, extensions) and client/custom/ live on it too: they become symlinks
-# into data/, seeded from the image on first boot.
+# Railway flattens image layers and drops deletions, so change files in place
+# rather than removing them. Access logs off: health checks and every API call
+# would flood the log view.
 RUN set -eux; \
-    mkdir /usr/src/espocrm-seed; \
-    mv custom /usr/src/espocrm-seed/custom; \
-    mv client/custom /usr/src/espocrm-seed/client-custom; \
-    ln -s /var/www/html/data/custom custom; \
-    ln -s /var/www/html/data/client-custom client/custom; \
     a2enmod remoteip; \
-    sed -i '/CustomLog/d' /etc/apache2/sites-enabled/000-default.conf; \
-    a2disconf other-vhosts-access-log
+    sed -i '/CustomLog/d' /etc/apache2/sites-available/000-default.conf \
+        /etc/apache2/conf-available/other-vhosts-access-log.conf
 COPY railway.conf /etc/apache2/conf-enabled/railway.conf
 COPY railway-entrypoint.sh /usr/local/bin/railway-entrypoint.sh
 
