@@ -36,7 +36,7 @@ There are two services: EspoCRM and Postgres.
 
 **Email.** Railway only allows outbound SMTP on the Pro plan. On Pro, set the SMTP server under Administration → Outbound Emails. On other plans EspoCRM can't send email, but it can still fetch mail over IMAP: set up personal email accounts or group inboxes under Administration.
 
-**Memory.** Around 250 MB at idle for EspoCRM and 80 MB for Postgres.
+**Memory.** Around 160 MB at idle for EspoCRM (web server, job daemon and WebSocket server together) and 80 MB for Postgres.
 
 **Files and backups.** Uploads, config and customizations are on the EspoCRM volume, and records are in Postgres, so turn on Railway's volume backups for both services.
 
