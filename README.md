@@ -1,6 +1,6 @@
 # Deploy and Host CRM (EspoCRM) on Railway
 
-[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/crm?utm_medium=integration&utm_source=button&utm_campaign=crm)
+[![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/new/template/crm?referralCode=sLjDXb&utm_medium=integration&utm_source=button&utm_campaign=crm)
 
 [EspoCRM](https://www.espocrm.com/) is an open-source CRM: accounts, contacts, leads, opportunities with a sales pipeline, cases, calendar, tasks, email, reports and a portal for customers. You can add your own fields, entities and layouts without code. This template runs EspoCRM 10.0.8 on the official image with Postgres. The admin account is created on first boot, and live updates run over WebSocket, so it works as soon as the deploy finishes.
 
