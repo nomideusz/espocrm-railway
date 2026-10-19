@@ -28,7 +28,7 @@ There are two services: EspoCRM and Postgres.
 
 - [EspoCRM documentation](https://docs.espocrm.com/)
 - [EspoCRM Docker guide](https://docs.espocrm.com/administration/docker/installation/)
-- [Template source on GitHub](https://github.com/nomideusz/espocrm-railway)
+- [Template source on GitHub](https://github.com/two-workspaces/espocrm)
 
 ### Implementation Details
 
