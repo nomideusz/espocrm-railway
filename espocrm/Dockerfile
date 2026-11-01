@@ -1,7 +1,7 @@
 # EspoCRM in one service: Apache, the job daemon and the WebSocket server,
 # supervised by railway-entrypoint.sh. Upstream's compose runs each as its own
 # container sharing three volumes; a Railway volume can't be shared.
-FROM espocrm/espocrm:10.0.8
+FROM espocrm/espocrm:10.0.11
 
 # Railway flattens image layers and drops deletions, so change files in place
 # rather than removing them. Access logs off: health checks and every API call
